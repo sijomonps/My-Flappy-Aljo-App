@@ -1,0 +1,20 @@
+{
+  "name": "my-flappy-aljo",
+  "version": "1.0.0",
+  "description": "A fun little Flappy Bird-style game",
+  "main": "index.html",
+  "scripts": {
+    "build": "powershell -Command \"if (Test-Path www) { Remove-Item -Recurse -Force www }; New-Item -ItemType Directory -Path www; Copy-Item index.html, game.js, utils.js, render.js, particles.js -Destination www; Copy-Item -Recurse src, Tools -Destination www\"",
+    "sync": "cap sync"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/cli": "^6.2.1",
+    "@capacitor/core": "^6.2.1",
+    "@capacitor/splash-screen": "^6.0.0",
+    "@capacitor/status-bar": "^6.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5"
+  }
+}

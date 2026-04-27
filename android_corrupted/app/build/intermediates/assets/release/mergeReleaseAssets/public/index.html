@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>My Flappy Aljo</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fallback v4 script if cdn.tailwindcss.com is blocked -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <style>
+        /* Fallback minimum layout classes purely to unbreak layout if internet blocks Tailwind script */
+        .absolute {
+            position: absolute !important;
+        }
+
+        .relative {
+            position: relative !important;
+        }
+
+        .inset-0 {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .top-3 {
+            top: 0.75rem;
+        }
+
+        .bottom-3 {
+            bottom: 0.75rem;
+        }
+
+        .left-3 {
+            left: 0.75rem;
+        }
+
+        .right-3 {
+            right: 0.75rem;
+        }
+
+        .left-1\/2 {
+            left: 50%;
+        }
+
+        .-translate-x-1\/2 {
+            transform: translateX(-50%);
+        }
+
+        .z-10 {
+            z-index: 10;
+        }
+
+        .z-20 {
+            z-index: 20;
+        }
+
+        .z-\[5\] {
+            z-index: 5;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .flex-1 {
+            flex: 1 1 0%;
+        }
+
+        .flex-shrink-0 {
+            flex-shrink: 0;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .block {
+            display: block;
+        }
+
+        .w-full {
+            width: 100%;
+        }
+
+        .h-full {
+            height: 100%;
+        }
+
+        .max-w-sm {
+            max-width: 24rem;
+        }
+
+        .max-w-lg {
+            max-width: 32rem;
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .mb-3 {
+            margin-bottom: 0.75rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-6 {
+            margin-bottom: 1.5rem;
+        }
+
+        .mb-8 {
+            margin-bottom: 2rem;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .font-extrabold {
+            font-weight: 800;
+        }
+
+        .font-bold {
+            font-weight: 700;
+        }
+
+        .font-semibold {
+            font-weight: 600;
+        }
+
+        .text-white {
+            color: #fff;
+        }
+
+        .text-gray-300 {
+            color: #d1d5db;
+        }
+
+        .text-gray-400 {
+            color: #9ca3af;
+        }
+
+        .text-gray-500 {
+            color: #6b7280;
+        }
+
+        .bg-black\/60 {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .bg-black\/85 {
+            background-color: rgba(0, 0, 0, 0.85);
+        }
+
+        .bg-gray-800 {
+            background-color: #1f2937;
+        }
+
+        .bg-gray-900 {
+            background-color: #111827;
+        }
+
+        .overflow-hidden {
+            overflow: hidden;
+        }
+
+        .overflow-y-auto {
+            overflow-y: auto;
+        }
+
+        .p-4 {
+            padding: 1rem;
+        }
+
+        .bg-clip-text {
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .text-transparent {
+            color: transparent;
+        }
+    </style>
+
+    <!-- Load Tone.js for audio -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+
+    <style>
+        /* ===== ROOT VARIABLES ===== */
+        :root {
+            --color-primary: #06b6d4;
+            --color-primary-dark: #0891b2;
+            --color-accent: #10b981;
+            --color-accent-dark: #059669;
+            --color-danger: #ef4444;
+            --color-warning: #f59e0b;
+            --color-surface: rgba(15, 23, 42, 0.85);
+            --color-surface-light: rgba(30, 41, 59, 0.9);
+            --color-glass: rgba(255, 255, 255, 0.08);
+            --color-glass-border: rgba(255, 255, 255, 0.12);
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --safe-top: env(safe-area-inset-top, 0px);
+            --safe-bottom: env(safe-area-inset-bottom, 0px);
+            --safe-left: env(safe-area-inset-left, 0px);
+            --safe-right: env(safe-area-inset-right, 0px);
+        }
+
+        /* ===== GLOBAL RESET ===== */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overscroll-behavior: none;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin: 0;
+            padding: 0;
+            background: #0f172a;
+            overflow: hidden;
+            position: fixed;
+            inset: 0;
+        }
+
+        /* ===== CANVAS ===== */
+        canvas {
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -webkit-crisp-edges;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            touch-action: none;
+            display: block;
+            will-change: transform;
+        }
+
+        /* ===== LAYOUT ===== */
+        .game-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            height: 100dvh;
+            /* dynamic viewport height for mobile */
+            width: 100vw;
+            overflow: hidden;
+            padding-top: var(--safe-top);
+            padding-bottom: var(--safe-bottom);
+            padding-left: var(--safe-left);
+            padding-right: var(--safe-right);
+        }
+
+        .game-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            /* allows flex child to shrink */
+            max-height: 100%;
+        }
+
+        .canvas-container {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* ===== TITLE ===== */
+        .game-title {
+            font-size: clamp(1.2rem, 4vw, 2.5rem);
+            padding: clamp(0.3rem, 1.5vw, 1rem);
+            letter-spacing: 0.02em;
+            background: linear-gradient(135deg, #67e8f9, #06b6d4, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 2px 8px rgba(6, 182, 212, 0.35));
+            line-height: 1.2;
+        }
+
+        /* ===== GLASSMORPHISM CARD ===== */
+        .glass-card {
+            background: var(--color-surface);
+            backdrop-filter: blur(20px) saturate(1.3);
+            -webkit-backdrop-filter: blur(20px) saturate(1.3);
+            border: 1px solid var(--color-glass-border);
+            border-radius: var(--radius-xl);
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-family: inherit;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            border-radius: var(--radius-lg);
+            transition: transform 0.18s cubic-bezier(.34, 1.56, .64, 1), box-shadow 0.22s ease, filter 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            min-height: 52px;
+            padding: 14px 28px;
+            font-size: 1.05rem;
+            letter-spacing: 0.01em;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.22) 48%, transparent 78%);
+            transform: translateX(-140%);
+            transition: transform 0.45s ease;
+            pointer-events: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px) scale(1.03);
+        }
+
+        .btn:hover::before {
+            transform: translateX(140%);
+        }
+
+        .btn:active {
+            transform: translateY(1px) scale(0.96);
+            filter: brightness(0.96);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #34d399, #10b981, #059669);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 8px 30px rgba(16, 185, 129, 0.55);
+            filter: brightness(1.1);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #a78bfa, #8b5cf6, #7c3aed);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-secondary:hover {
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.5);
+            filter: brightness(1.1);
+        }
+
+        .btn-accent {
+            background: linear-gradient(135deg, #67e8f9, #06b6d4, #0891b2);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-accent:hover {
+            box-shadow: 0 8px 30px rgba(6, 182, 212, 0.55);
+            filter: brightness(1.1);
+        }
+
+        .btn-lg {
+            min-height: 60px;
+            padding: 16px 32px;
+            font-size: 1.15rem;
+            border-radius: var(--radius-xl);
+        }
+
+        /* ===== OVERLAYS ===== */
+        .overlay {
+            backdrop-filter: blur(12px) saturate(1.2);
+            -webkit-backdrop-filter: blur(12px) saturate(1.2);
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(.22, 1, .36, 1);
+            will-change: opacity, transform;
+        }
+
+        /* ===== INPUT ===== */
+        .input-field {
+            width: 100%;
+            padding: 14px 20px;
+            background: rgba(30, 41, 59, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            color: #fff;
+            font-family: inherit;
+            font-size: 1.1rem;
+            text-align: center;
+            font-weight: 600;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+            outline: none;
+        }
+
+        .input-field::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+            font-weight: 400;
+        }
+
+        .input-field:focus {
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.2), 0 0 20px rgba(6, 182, 212, 0.1);
+        }
+
+        /* ===== LEADERBOARD ENTRY ===== */
+        .lb-entry {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            border-radius: 12px;
+            transition: background 0.2s ease, transform 0.15s ease;
+            border: 1px solid transparent;
+        }
+
+        .lb-entry:hover {
+            background: rgba(255, 255, 255, 0.06);
+            transform: translateX(2px);
+        }
+
+        .lb-entry.current-player {
+            background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.15));
+            border-color: rgba(6, 182, 212, 0.4);
+            box-shadow: 0 0 15px rgba(6, 182, 212, 0.1);
+        }
+
+        .lb-entry .rank {
+            font-size: 1.3rem;
+            min-width: 36px;
+            text-align: center;
+        }
+
+        .lb-entry .player-name {
+            font-weight: 600;
+            color: #e2e8f0;
+            font-size: 0.95rem;
+        }
+
+        .lb-entry .player-score {
+            font-weight: 800;
+            color: #fbbf24;
+            font-size: 1.15rem;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .lb-entry .online-dot {
+            font-size: 0.6rem;
+            line-height: 1;
+        }
+
+        /* ===== SCORE DISPLAY ===== */
+        .score-hud {
+            font-variant-numeric: tabular-nums;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6), 0 0 30px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.02em;
+            transition: transform 0.18s ease, text-shadow 0.2s ease;
+        }
+
+        /* ===== BADGE (online indicator) ===== */
+        .online-badge {
+            background: rgba(0, 0, 0, 0.55);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            padding: 6px 12px;
+            font-size: 0.75rem;
+        }
+
+        .online-badge .pulse-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #34d399;
+            animation: pulseDot 2s ease-in-out infinite;
+            box-shadow: 0 0 6px rgba(52, 211, 153, 0.6);
+        }
+
+        .player-badge {
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            padding: 6px 14px;
+            font-size: 0.8rem;
+        }
+
+        /* ===== NEW HIGH SCORE ===== */
+        @keyframes newHighScore {
+            0% {
+                transform: scale(1);
+                text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+            }
+
+            50% {
+                transform: scale(1.08);
+                text-shadow: 0 0 30px rgba(251, 191, 36, 0.8), 0 0 60px rgba(251, 191, 36, 0.3);
+            }
+
+            100% {
+                transform: scale(1);
+                text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+            }
+        }
+
+        .new-high-score {
+            animation: newHighScore 1.5s ease-in-out infinite;
+            filter: drop-shadow(0 0 16px rgba(251, 191, 36, 0.5));
+        }
+
+        @keyframes scorePop {
+            0% {
+                transform: translate(-50%, 0) scale(1);
+            }
+
+            45% {
+                transform: translate(-50%, 0) scale(1.28);
+            }
+
+            100% {
+                transform: translate(-50%, 0) scale(1);
+            }
+        }
+
+        .score-pop {
+            animation: scorePop 0.2s ease-out;
+        }
+
+        /* ===== GAME OVER SCROLL ===== */
+        .game-over-scroll {
+            overflow-y: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(6, 182, 212, 0.4) transparent;
+            padding-bottom: calc(20px + var(--safe-bottom));
+        }
+
+        .game-over-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .game-over-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .game-over-scroll::-webkit-scrollbar-thumb {
+            background: rgba(6, 182, 212, 0.3);
+            border-radius: 10px;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-40px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.85);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            20% {
+                transform: translateX(-8px);
+            }
+
+            40% {
+                transform: translateX(8px);
+            }
+
+            60% {
+                transform: translateX(-5px);
+            }
+
+            80% {
+                transform: translateX(5px);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+        @keyframes pulseDot {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.5;
+                transform: scale(0.8);
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+        }
+
+        .animate-fadeIn {
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .animate-slideDown {
+            animation: slideDown 0.5s cubic-bezier(.34, 1.56, .64, 1);
+        }
+
+        .animate-slideUp {
+            animation: slideUp 0.5s cubic-bezier(.34, 1.56, .64, 1);
+        }
+
+        .animate-scaleIn {
+            animation: scaleIn 0.4s cubic-bezier(.34, 1.56, .64, 1);
+        }
+
+        .animate-pulse {
+            animation: pulse 2.5s ease-in-out infinite;
+        }
+
+        .animate-bounce {
+            animation: bounce 1.2s ease-in-out infinite;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Stagger animations */
+        .stagger-1 {
+            animation-delay: 0.1s;
+            animation-fill-mode: both;
+        }
+
+        .stagger-2 {
+            animation-delay: 0.2s;
+            animation-fill-mode: both;
+        }
+
+        .stagger-3 {
+            animation-delay: 0.35s;
+            animation-fill-mode: both;
+        }
+
+        .stagger-4 {
+            animation-delay: 0.5s;
+            animation-fill-mode: both;
+        }
+
+        .stagger-5 {
+            animation-delay: 0.65s;
+            animation-fill-mode: both;
+        }
+
+        /* ===== CUSTOM SCROLLBAR (leaderboard) ===== */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #06b6d4, #8b5cf6);
+            border-radius: 10px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #22d3ee, #a78bfa);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 480px) {
+            .game-title {
+                font-size: 1.1rem;
+                padding: 0.25rem;
+            }
+
+            .btn {
+                min-height: 48px;
+                padding: 12px 20px;
+                font-size: 0.95rem;
+            }
+
+            .btn-lg {
+                min-height: 54px;
+                padding: 14px 24px;
+                font-size: 1.05rem;
+            }
+
+            .glass-card {
+                border-radius: 16px;
+            }
+
+            .lb-entry {
+                padding: 8px 10px;
+            }
+
+            .lb-entry .rank {
+                font-size: 1.1rem;
+                min-width: 30px;
+            }
+
+            .lb-entry .player-name {
+                font-size: 0.85rem;
+            }
+
+            .lb-entry .player-score {
+                font-size: 1rem;
+            }
+
+            .score-card-score {
+                font-size: 3.5rem !important;
+            }
+        }
+
+        @media (min-width: 481px) and (max-width: 767px) {
+            .game-title {
+                font-size: 1.4rem;
+                padding: 0.4rem;
+            }
+
+            .score-card-score {
+                font-size: 4rem !important;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .game-title {
+                font-size: 2.2rem;
+                padding: 0.7rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .game-title {
+                font-size: 2.5rem;
+                padding: 0.8rem;
+            }
+        }
+
+        /* ===== LANDSCAPE MOBILE ===== */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .game-title {
+                font-size: 1rem;
+                padding: 0.15rem;
+            }
+
+            .btn {
+                min-height: 40px;
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+
+            .btn-lg {
+                min-height: 44px;
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+        }
+
+        /* ===== SELECTION ===== */
+        ::selection {
+            background: rgba(6, 182, 212, 0.3);
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white">
+
+    <div class="game-wrapper">
+        <!-- Game Title -->
+        <h1 id="gameTitle" class="game-title font-extrabold text-center flex-shrink-0 animate-slideDown"
+            style="margin:0;">
+            My Flappy Aljo
+        </h1>
+
+        <!-- Game container -->
+        <div class="game-container">
+            <div class="canvas-container bg-gray-800 overflow-hidden relative mx-auto"
+                style="flex: 1; display: flex; flex-direction: column; border-radius: 0;">
+                <canvas id="gameCanvas" class="w-full h-full"></canvas>
+
+                <!-- Start Screen Overlay -->
+                <div id="startScreen"
+                    class="overlay absolute inset-0 bg-black/60 flex flex-col items-center justify-center p-4 z-10 animate-fadeIn">
+                    <div class="text-center animate-float">
+                        <h2 class="text-3xl md:text-5xl font-extrabold mb-3 text-white"
+                            style="text-shadow: 0 2px 15px rgba(0,0,0,0.5);">Ready?</h2>
+                        <p class="text-sm md:text-base mb-8 text-gray-300">Click, tap, or press SPACE to flap!</p>
+                    </div>
+                    <button id="startButton" class="btn btn-primary btn-lg animate-pulse">
+                        🚀 Start Game
+                    </button>
+                </div>
+
+                <!-- Name Entry Screen -->
+                <div id="nameEntryScreen"
+                    class="overlay absolute inset-0 bg-black/85 flex flex-col items-center justify-center p-4 z-20">
+                    <div class="glass-card p-6 md:p-8 max-w-sm w-full mx-4 animate-scaleIn">
+                        <div class="text-center mb-6">
+                            <span class="text-4xl mb-2 block">🎮</span>
+                            <h2
+                                class="text-2xl md:text-3xl font-extrabold bg-gradient-to-r from-cyan-300 to-violet-400 bg-clip-text text-transparent mb-2">
+                                Welcome!</h2>
+                            <p class="text-gray-400 text-sm">Enter your name to start playing</p>
+                        </div>
+                        <input type="text" id="playerNameInput" maxlength="20" placeholder="Your Name"
+                            class="input-field mb-4">
+                        <button id="saveNameButton" class="btn btn-accent btn-lg w-full">
+                            ✅ Start Playing
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Game Over Overlay -->
+                <div id="gameOverScreen" class="overlay absolute inset-0 bg-black/85 hidden flex-col items-center z-10">
+                    <div class="game-over-scroll flex flex-col items-center w-full h-full px-3 md:px-4 py-4">
+                        <div class="flex flex-col items-center w-full max-w-lg">
+
+                            <!-- Game Over Title -->
+                            <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-red-400 mb-4 animate-slideDown text-center"
+                                style="text-shadow: 0 0 20px rgba(239,68,68,0.4);">
+                                💥 You Killed Aljo!
+                            </h2>
+
+                            <!-- Score Card -->
+                            <div class="glass-card p-5 md:p-6 mb-4 w-full animate-scaleIn stagger-1">
+                                <div class="text-center mb-3">
+                                    <p class="text-gray-400 text-xs uppercase tracking-widest mb-1">Your Score</p>
+                                    <p class="score-card-score text-5xl md:text-6xl font-black text-yellow-400"
+                                        style="line-height:1.1;">
+                                        <span id="finalScore">0</span>
+                                    </p>
+                                </div>
+                                <div class="flex justify-center items-center pt-3 border-t border-white/10">
+                                    <div class="text-center">
+                                        <p class="text-gray-500 text-xs uppercase tracking-wider mb-0.5">Personal Best
+                                        </p>
+                                        <p class="text-xl md:text-2xl font-bold text-cyan-400">
+                                            <span id="highScore">0</span> 🏆
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Play Again Button -->
+                            <button id="restartButton"
+                                class="btn btn-primary btn-lg w-full mb-4 animate-slideUp stagger-2">
+                                🔄 Play Again
+                            </button>
+
+                            <!-- Leaderboard -->
+                            <div id="leaderboardContainer"
+                                class="glass-card p-4 md:p-5 mb-4 w-full animate-slideUp stagger-3">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h3
+                                        class="text-lg md:text-xl font-bold bg-gradient-to-r from-cyan-300 to-yellow-300 bg-clip-text text-transparent flex-1 text-center">
+                                        🏆 Global Leaderboard
+                                    </h3>
+                                    <button id="clearLeaderboardBtn"
+                                        class="hidden text-xs bg-red-600/80 hover:bg-red-600 text-white px-2 py-1 rounded-lg transition">
+                                        🗑️
+                                    </button>
+                                </div>
+                                <div id="leaderboardList"
+                                    class="space-y-1.5 max-h-64 md:max-h-80 overflow-y-auto pr-1 custom-scrollbar">
+                                    <!-- Leaderboard entries will be inserted here -->
+                                </div>
+                            </div>
+
+                            <!-- Change Name Button -->
+                            <button id="changeNameButton" class="btn btn-secondary w-full animate-slideUp stagger-4">
+                                ✏️ Change Name
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Score Display -->
+                <div id="scoreDisplay"
+                    class="score-hud absolute top-3 left-1/2 -translate-x-1/2 text-4xl md:text-6xl font-black text-white z-[5]"
+                    style="transition: transform 0.2s ease-out;">
+                    0
+                </div>
+
+                <!-- Player Name Display -->
+                <div id="playerNameDisplay"
+                    class="player-badge absolute bottom-3 left-3 font-semibold text-white hidden">
+                    👤 <span id="currentPlayerName"></span>
+                </div>
+
+                <!-- Active Players Display -->
+                <div id="activePlayersDisplay" class="online-badge absolute top-3 right-3 font-semibold text-white">
+                    <div class="flex items-center gap-1.5">
+                        <span class="pulse-dot"></span>
+                        <span id="activePlayersCount">0</span> online
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initGame } from './src/game.js';
+        import { setupNativeShell } from './src/native-shell.js';
+
+        setupNativeShell();
+
+        initGame({
+            firebaseApi: window.firebase,
+            toneApi: window.Tone
+        });
+    </script>
+</body>
+
+</html>
