@@ -238,11 +238,12 @@ export function initGame({ firebaseApi = window.firebase, toneApi = window.Tone 
     const BASE_HEIGHT = 700;
     const BASE_WIDTH = 400;
     const MOBILE_BREAKPOINT = 768;
-    const MIN_PIPE_GAP = 140;
-    const MAX_PIPE_GAP = 260;
+    const MIN_PIPE_GAP = 190;
+    const MAX_PIPE_GAP = 340;
     const MIN_PIPE_WIDTH = 50;
     const MAX_PIPE_WIDTH = 110;
-    const MOBILE_GAP_MULTIPLIER = 0.92;
+    const MOBILE_GAP_MULTIPLIER = 1.18;
+    const TABLET_GAP_MULTIPLIER = 1.08;
     const MOBILE_SPEED_MULTIPLIER = 0.9;
 
     const gameplayScale = {
@@ -267,6 +268,8 @@ export function initGame({ firebaseApi = window.firebase, toneApi = window.Tone 
         let scaledPipeGap = clamp(PIPE_GAP * scaleFactor, MIN_PIPE_GAP, MAX_PIPE_GAP);
         if (isMobileViewport) {
             scaledPipeGap = clamp(scaledPipeGap * MOBILE_GAP_MULTIPLIER, MIN_PIPE_GAP, MAX_PIPE_GAP);
+        } else if (logicalWidth < 1100) {
+            scaledPipeGap = clamp(scaledPipeGap * TABLET_GAP_MULTIPLIER, MIN_PIPE_GAP, MAX_PIPE_GAP);
         }
 
         let scaledPipeWidth = clamp(PIPE_WIDTH * scaleFactor, MIN_PIPE_WIDTH, MAX_PIPE_WIDTH);
