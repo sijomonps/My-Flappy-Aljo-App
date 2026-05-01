@@ -1,20 +1,20 @@
 -- Merging decision tree log ---
 provider#androidx.core.content.FileProvider
-INJECTED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:27:9-35:20
+INJECTED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:23:9-29:20
 	android:grantUriPermissions
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:31:13-47
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:27:13-47
 	android:authorities
 		INJECTED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:29:13-64
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:25:13-64
 	android:exported
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:30:13-37
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:26:13-37
 	android:name
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:28:13-62
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:24:13-62
 manifest
-ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:2:1-41:12
-INJECTED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:2:1-41:12
+ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:2:1-35:12
 MERGED from [:capacitor-splash-screen] C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\node_modules\@capacitor\splash-screen\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:capacitor-status-bar] C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\node_modules\@capacitor\status-bar\android\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:capacitor-android] C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\node_modules\@capacitor\android\capacitor\build\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-7:12
@@ -61,8 +61,8 @@ MERGED from [org.apache.cordova:framework:10.1.1] C:\Users\sijom\.gradle\caches\
 	xmlns:android
 		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:4:5-36:19
-INJECTED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:4:5-36:19
+ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:3:5-30:19
+INJECTED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:3:5-30:19
 MERGED from [:capacitor-cordova-android-plugins] C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:8:5-9:19
 MERGED from [:capacitor-cordova-android-plugins] C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\capacitor-cordova-android-plugins\build\intermediates\merged_manifest\debug\AndroidManifest.xml:8:5-9:19
 MERGED from [androidx.emoji2:emoji2:1.2.0] C:\Users\sijom\.gradle\caches\transforms-3\61f606930917a64588c199b54d3d711a\transformed\emoji2-1.2.0\AndroidManifest.xml:23:5-33:19
@@ -82,51 +82,51 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\sijom\.gradle\cach
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.12.0] C:\Users\sijom\.gradle\caches\transforms-3\4f7b0d764f8b5d0d84c4d0344e1adc27\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:9:9-35
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:8:9-35
 	android:label
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:7:9-41
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:6:9-41
 	android:roundIcon
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:8:9-54
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:7:9-54
 	android:icon
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:6:9-43
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:5:9-43
 	android:allowBackup
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:5:9-35
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:4:9-35
 	android:theme
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:10:9-40
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:9:9-40
 activity#com.sijomon.flappyaljo.MainActivity
-ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:12:9-25:20
+ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:10:9-21:20
 	android:label
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:15:13-56
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:13:13-56
 	android:launchMode
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:17:13-44
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:15:13-44
 	android:exported
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:18:13-36
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:16:13-36
 	android:configChanges
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:13:13-129
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:11:13-129
 	android:theme
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:16:13-62
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:14:13-62
 	android:name
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:14:13-41
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:12:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:20:13-23:29
+ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:17:13-20:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:21:17-69
+ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:18:17-69
 	android:name
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:21:25-66
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:18:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:22:17-77
+ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:19:17-77
 	android:name
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:22:27-74
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:19:27-74
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:40:5-67
+ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:34:5-67
 	android:name
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:40:22-64
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:34:22-64
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:32:13-34:64
+ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:28:13-112
 	android:resource
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:34:17-51
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:28:75-109
 	android:name
-		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:33:17-67
+		ADDED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml:28:24-74
 uses-sdk
 INJECTED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\sijom\OneDrive\Desktop\Code\App\My-Flappy-Aljo-App\android\app\src\main\AndroidManifest.xml

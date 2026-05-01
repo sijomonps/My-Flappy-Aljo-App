@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="ic_launcher_background">#FFFFFF</color>
     <string name="app_name">My Flappy Aljo</string>
     <string name="custom_url_scheme">com.sijomon.flappyaljo</string>
     <string name="package_name">com.sijomon.flappyaljo</string>
